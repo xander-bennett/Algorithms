@@ -3,7 +3,17 @@
 import argparse
 
 def find_max_profit(prices):
-  pass
+  # create base case
+  profit = float('-inf')
+  for i in range(len(prices) - 1):  #the range is all but the last one because you can't buy and sell on the same day
+    # establish any of the elements to act as the buy. The remaining elements are compared as sells
+    buy_order = prices[i]
+    for j in prices[i+1:]:
+      sell_order = j
+      net = (sell_order - buy_order)
+      if net > profit:
+        profit = net
+  return profit
 
 
 if __name__ == '__main__':
